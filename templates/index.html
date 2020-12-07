@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Index</title>
+
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+
+<!-- Latest compiled and minified JavaScript -->
+
+  </head>
+
+
+  <body>
+
+<form action = "/fpath" method = "post" enctype="multipart/form-data">   
+ <input type="text" name="text" value="{{path}}"/>  
+ <input type = "submit" value="changepath">  
+</form>  
+
+<div class="container">
+
+	<h1> Edit and update text </h1>
+	<br>
+	<br>
+  <div class="row">
+    <div class="col-sm-6 img-responsive">
+    	<img style='height: 100%; width: 100%; object-fit: contain' src="static/cutimg/{{ocr_values['file']}}">
+    </div>
+    <div class="col-sm-6">
+    	<form method="POST">
+    		<input type="text" name="text" value="{{path}}"/>  
+     {% for key, value in ocr_values.items() %}
+     <div class="form-group">
+      <input name="{{key}}" class="form-control" value="{{value}}" >
+        <br>
+      	{% endfor %}
+      	</div>
+      	<button type="submit" class="btn btn-primary">Save and Next</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+    
+
+  </body>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>  
+</html>
